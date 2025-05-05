@@ -6,6 +6,6 @@ import flowbiteReact from "flowbite-react/plugin/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/ecomm/',
   plugins: [react(), tailwindcss(), flowbiteReact()],
+  base: '/ecomm/',
 })

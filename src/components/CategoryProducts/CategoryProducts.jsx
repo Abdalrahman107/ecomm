@@ -7,11 +7,11 @@ import ProductCard from '../ProductCard/ProductCard';
 import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
 import NotFound from '../NotFound/NotFound';
 import { cartContext } from '../../context/Cart/CartContext';
-
-ProductCard
+import { WishListContext } from '../../context/WishList/WishList';
 
 const CategoryProducts = () => {
 
+  const { products, addProductToWishList } = useContext(WishListContext)
   const { id } = useParams();
 
     const { addProductToCart } = useContext(cartContext);
@@ -19,12 +19,12 @@ const CategoryProducts = () => {
 
   const { isLoading: productsIsLoading , isError: productsIsError, data: productsData } = useProducts();
 
-  const products = productsData?.data.data;
+  const newProducts = productsData?.data.data;
 
-  let categoryProducts = products?.filter((product)=>product.category._id === id);
+  let categoryProducts = newProducts?.filter((product)=>product.category._id === id);
 
   if(categoryProducts?.length === 0){
-    categoryProducts =  products?.splice(0,10);
+    categoryProducts =  newProducts.splice(0,10);
   }
 
   if(productsIsLoading){
@@ -44,7 +44,7 @@ const CategoryProducts = () => {
 
   return (
     <div className='container mt-18'>
-        <ProductCard products={categoryProducts} addtocart={addProductToCart}/>
+        <ProductCard products={categoryProducts} addtocart={addProductToCart} wishListProducts={products} addToWishList={addProductToWishList}/>
     </div>
   )
 }

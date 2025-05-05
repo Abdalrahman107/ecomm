@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createHashRouter, HashRouter, RouterProvider } from 'react-router-dom'
 import Home from './components/Home/Home'
 import Layout from './components/Layout/Layout'
 import Cart from './components/Cart/Cart'
@@ -24,23 +24,55 @@ import WishList from './components/WishList/WishList'
 
 const App = () => {
 
-  const router = createBrowserRouter([{path:"/", element:<Layout/>, children:[
-    {index:true, element: <ProtectedRoute><Home/></ProtectedRoute>},
-    {path:"/cart", element: <ProtectedRoute><Cart/></ProtectedRoute>},
-    {path:"/payment/:id", element: <ProtectedRoute><Payment/></ProtectedRoute>},
-    {path:"/categories", element: <ProtectedRoute><Categories/></ProtectedRoute>},
-    {path:"/categoryproducts/:id", element: <ProtectedRoute><CategoryProducts/></ProtectedRoute>},
-    {path:"/brands", element: <ProtectedRoute><Brands/></ProtectedRoute>},
-    {path: "/wishlist", element: <ProtectedRoute><WishList /></ProtectedRoute>, },
-    {path:"/register", element: <Register/>},
-    {path:"/signin", element: <Signin/>},
-    {path:"/forgetpassword", element: <ForgetPassword/>},
-    {path:"/verificationresetcode", element: <VerificationResetCode/>},
-    {path:"/resetpassword", element: <ResetPassword/>},
-    {path:"/allorders", element: <ProtectedRoute><AllOrders/></ProtectedRoute>},
-    {path:"/productdetails/:id", element: <ProtectedRoute><ProductDetails/></ProtectedRoute>},
-    {path:"*", element: <NotFound/>},
-  ]}])
+  // const router = createHashRouter([{path:"", element:<Layout/>, children:[
+  //   // {index: true, element: <Signin/> },
+  //   {path:"/", element: <ProtectedRoute><Home/></ProtectedRoute>},
+  //   {path:"", element: <ProtectedRoute><Home/></ProtectedRoute>},
+  //   {path:"/ecomm/", element: <ProtectedRoute><Home/></ProtectedRoute>},
+  //   {path:"/cart", element: <ProtectedRoute><Cart/></ProtectedRoute>},
+  //   {path:"/payment/:id", element: <ProtectedRoute><Payment/></ProtectedRoute>},
+  //   {path:"/categories", element: <ProtectedRoute><Categories/></ProtectedRoute>},
+  //   {path:"/categoryproducts/:id", element: <ProtectedRoute><CategoryProducts/></ProtectedRoute>},
+  //   {path:"/brands", element: <ProtectedRoute><Brands/></ProtectedRoute>},
+  //   {path: "/wishlist", element: <ProtectedRoute><WishList /></ProtectedRoute>, },
+  //   {path:"/register", element: <Register/>},
+  //   {path:"/signin", element: <Signin/>},
+  //   {path:"/forgetpassword", element: <ForgetPassword/>},
+  //   {path:"/verificationresetcode", element: <VerificationResetCode/>},
+  //   {path:"/resetpassword", element: <ResetPassword/>},
+  //   {path:"/allorders", element: <ProtectedRoute><AllOrders/></ProtectedRoute>},
+  //   {path:"/productdetails/:id", element: <ProtectedRoute><ProductDetails/></ProtectedRoute>},
+  //   {path:"*", element: <NotFound/>},
+  // ]}])
+
+
+  const router = createHashRouter([
+    {
+      path: "",
+      element: <Layout />,
+      children: [
+        { path: "/signin", element: <Signin /> }, 
+        { path: "/ecomm", element: <ProtectedRoute><Home /></ProtectedRoute> },
+        { path: "/", element: <ProtectedRoute><Home /></ProtectedRoute> },
+        { path: "", element: <ProtectedRoute><Home /></ProtectedRoute> },
+        { path: "/cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
+        { path: "/payment/:id", element: <ProtectedRoute><Payment /></ProtectedRoute> },
+        { path: "/categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
+        { path: "/categoryproducts/:id", element: <ProtectedRoute><CategoryProducts /></ProtectedRoute> },
+        { path: "/brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
+        { path: "/wishlist", element: <ProtectedRoute><WishList /></ProtectedRoute> },
+        { path: "/register", element: <Register /> },
+        { path: "/signin", element: <Signin /> },
+        { path: "/forgetpassword", element: <ForgetPassword /> },
+        { path: "/verificationresetcode", element: <VerificationResetCode /> },
+        { path: "/resetpassword", element: <ResetPassword /> },
+        { path: "/allorders", element: <ProtectedRoute><AllOrders /></ProtectedRoute> },
+        { path: "/productdetails/:id", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
+        { path: "*", element: <NotFound /> }
+      ]
+    }
+  ]);
+
 
   const queryClient = new QueryClient();
 
@@ -50,7 +82,9 @@ const App = () => {
   return (
     <AuthContextProvider>
       <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router}/>          
+        {/* <HashRouter> */}
+          <RouterProvider router={router}/>  
+        {/* </HashRouter>         */}
       </QueryClientProvider>
     </AuthContextProvider>
   )

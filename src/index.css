@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+
+
+:root{
+  --main-color: #0aad0a;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145,158,171,0.2) 0px 2px 4px -1px, rgba(125,158,171,.14) 0px 4px 5px 0px, rgba(145,158,171,.12) 0px 1px 10px 0px;
+  --font-family : "Encode Sans Expanded", sans-serif;
+  --rating-color : #ffc908
+}
+
+.main-color{
+  color: var(--main-color);
+}
+.bg-main-color{
+  background-color: var(--main-color);
+}
+.light-color{
+  color: var(--light-color);
+}
+.bg-light-color{
+  background-color: var(--light-color);
+}
+.rating-color{
+  color: var(--rating-color);
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+body{
+  font-family: var(--font-family);
+}
+
+.container{
+  @apply w-[95%] mx-auto p-4
+}
+
+.row{
+  @apply flex flex-wrap
+}
+
+.active{
+  color: var(--main-color);
+}
+
+
+.home .link{
+  transition: all 0.5s;
+}
+
+.home .card:hover .link{
+  top: 0;
+  opacity: 1;
+}
+
+.home .card .inner:hover{
+  box-shadow: var(--shadow);
+}
+
+.home .card .inner{
+  transition: all 0.5s;
+}

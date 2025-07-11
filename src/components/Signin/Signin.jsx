@@ -32,7 +32,9 @@ const Signin = () => {
         },
         validationSchema:Yup.object({
             email: Yup.string().email('Please enter a Valid Mail').required("Input is Required"),
-            password: Yup.string().matches(/^[A-Z].{6,}$/,"password must starts with capital letter and at least 6 characters").required("Input is Required"),
+            password: Yup.string()
+            .matches(/^[A-Z].{5,}$/, "Password must start with a capital letter and be at least 6 characters")
+            .required("Input is Required")
         }),
         onSubmit:(values)=>signin(values),
         

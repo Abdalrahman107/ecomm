@@ -24,27 +24,6 @@ import WishList from './components/WishList/WishList'
 
 const App = () => {
 
-  // const router = createHashRouter([{path:"", element:<Layout/>, children:[
-  //   // {index: true, element: <Signin/> },
-  //   {path:"/", element: <ProtectedRoute><Home/></ProtectedRoute>},
-  //   {path:"", element: <ProtectedRoute><Home/></ProtectedRoute>},
-  //   {path:"/ecomm/", element: <ProtectedRoute><Home/></ProtectedRoute>},
-  //   {path:"/cart", element: <ProtectedRoute><Cart/></ProtectedRoute>},
-  //   {path:"/payment/:id", element: <ProtectedRoute><Payment/></ProtectedRoute>},
-  //   {path:"/categories", element: <ProtectedRoute><Categories/></ProtectedRoute>},
-  //   {path:"/categoryproducts/:id", element: <ProtectedRoute><CategoryProducts/></ProtectedRoute>},
-  //   {path:"/brands", element: <ProtectedRoute><Brands/></ProtectedRoute>},
-  //   {path: "/wishlist", element: <ProtectedRoute><WishList /></ProtectedRoute>, },
-  //   {path:"/register", element: <Register/>},
-  //   {path:"/signin", element: <Signin/>},
-  //   {path:"/forgetpassword", element: <ForgetPassword/>},
-  //   {path:"/verificationresetcode", element: <VerificationResetCode/>},
-  //   {path:"/resetpassword", element: <ResetPassword/>},
-  //   {path:"/allorders", element: <ProtectedRoute><AllOrders/></ProtectedRoute>},
-  //   {path:"/productdetails/:id", element: <ProtectedRoute><ProductDetails/></ProtectedRoute>},
-  //   {path:"*", element: <NotFound/>},
-  // ]}])
-
 
   const router = createHashRouter([
     {

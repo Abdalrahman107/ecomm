@@ -34,7 +34,7 @@ const Register = () => {
             name: Yup.string().min(6,"Min. Chars is 6").max(15," Max. chars is 15").required("Input is Required"),
             email: Yup.string().email('Please enter a Valid Mail').required("Input is Required"),
             password: Yup.string()
-            .matches(/^[A-Z].{5,}$/, "Password must start with a capital letter and be at least 6 characters")
+            .matches(/^[A-Za-z0-9]{6,}$/, "Password must be at least 6 characters")
             .required("Input is Required"),
             rePassword: Yup.string().oneOf([Yup.ref('password')], "Passwords Must Match").required("Input is Required"),
             phone: Yup.string().matches(/^01[0,1,2,5][0-9]{8}$/,"Must be a valid Phone Number").required("Input is Required"),

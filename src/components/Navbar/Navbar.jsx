@@ -41,24 +41,19 @@ export function Navbar() {
           <NavLink to="/brands" className="hover:text-[#0aad0a]! transition">
             Brands
           </NavLink>
-
-          {token && (
-            <>
-              <NavLink to="/cart" className="relative hover:text-[#0aad0a]! transition">
-                <i className="fa-solid fa-cart-shopping mr-1"></i>
-                <span className="absolute -top-2 -right-3 bg-[#0aad0a]! text-white text-[10px] font-semibold w-5 h-5 rounded-full flex items-center justify-center">
-                  {noOfCartItems}
-                </span>
-                Cart
-              </NavLink>
-              <NavLink to="/allorders" className="hover:text-[#0aad0a]! transition">
-                Orders
-              </NavLink>
-              <NavLink to="/wishlist" className="hover:text-[#0aad0a]! transition">
-                Wishlist
-              </NavLink>
-            </>
-          )}
+          <NavLink to="/cart" className="relative hover:text-[#0aad0a]! transition">
+            <i className="fa-solid fa-cart-shopping mr-1"></i>
+            <span className="absolute -top-2 -right-3 bg-[#0aad0a]! text-white text-[10px] font-semibold w-5 h-5 rounded-full flex items-center justify-center">
+              {noOfCartItems}
+            </span>
+            Cart
+          </NavLink>
+          <NavLink to="/allorders" className="hover:text-[#0aad0a]! transition">
+            Orders
+          </NavLink>
+          <NavLink to="/wishlist" className="hover:text-[#0aad0a]! transition">
+            Wishlist
+          </NavLink>
         </div>
 
         {/* Social + Auth Group */}
@@ -108,20 +103,15 @@ export function Navbar() {
           <NavLink to="/brands" className="block hover:text-[#0aad0a]" onClick={() => setMenuOpen(false)}>
             Brands
           </NavLink>
-
-          {token && (
-            <>
-              <NavLink to="/cart" className="block hover:text-[#0aad0a]" onClick={() => setMenuOpen(false)}>
-                Cart
-              </NavLink>
-              <NavLink to="/allorders" className="block hover:text-[#0aad0a]" onClick={() => setMenuOpen(false)}>
-                Orders
-              </NavLink>
-              <NavLink to="/wishlist" className="block hover:text-[#0aad0a]" onClick={() => setMenuOpen(false)}>
-                Wishlist
-              </NavLink>
-            </>
-          )}
+          <NavLink to="/cart" className="block hover:text-[#0aad0a]" onClick={() => setMenuOpen(false)}>
+            Cart
+          </NavLink>
+          <NavLink to="/allorders" className="block hover:text-[#0aad0a]" onClick={() => setMenuOpen(false)}>
+            Orders
+          </NavLink>
+          <NavLink to="/wishlist" className="block hover:text-[#0aad0a]" onClick={() => setMenuOpen(false)}>
+            Wishlist
+          </NavLink>
 
           {/* Social + Auth */}
           <div className="flex items-center space-x-4 mt-4 justify-center">

@@ -54,7 +54,7 @@ const ProductCard = ({ products, addtocart, wishListProducts, addToWishList }) =
               {clickedProductId === product.id ? (
                 <i className="fa-solid fa-spinner fa-spin text-lg"></i>
               ) : (
-                <i class="fa-solid fa-cart-shopping text-lg"></i>
+                <i className="fa-solid fa-cart-shopping text-lg"></i>
               )}
             </button>
 
@@ -75,7 +75,7 @@ const ProductCard = ({ products, addtocart, wishListProducts, addToWishList }) =
               ) : (
               favourites[0]?.some((item) => item.id.includes(product.id)) && (
               <i className="fa-solid fa-heart text-red-600 text-lg"></i>
-              ) || <i class="fa-solid fa-heart text-lg"></i>
+              ) || <i className="fa-solid fa-heart text-lg"></i>
               )}
             </button>
           </div>

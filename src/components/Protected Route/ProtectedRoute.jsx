@@ -1,7 +1,4 @@
-import React from 'react'
-
-import NotFound from '../NotFound/NotFound'
-
+import RequiredLogin from '../../components/RequiredLogin/RequiredLogin'
 
 
 const ProtectedRoute = ({children}) => {
@@ -10,7 +7,7 @@ const ProtectedRoute = ({children}) => {
     
   return (
     <>
-      {token?children:<NotFound/>}
+      {token?children:<RequiredLogin/>}
     </>
   )
 }

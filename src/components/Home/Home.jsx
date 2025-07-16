@@ -1,9 +1,6 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { useContext } from 'react'
 import HomeSlider from '../HomeSlider/HomeSlider'
 import CategorySlider from '../CategorySlider/CategorySlider'
-import { useQuery } from '@tanstack/react-query'
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import NotFound from '../NotFound/NotFound'
 import { cartContext } from '../../context/Cart/CartContext'

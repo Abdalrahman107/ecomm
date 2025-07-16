@@ -36,7 +36,17 @@ const AllOrders = () => {
           </>
         )
       }
+
+  if (data?.data?.length < 1) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-3xl text-green-500">There is no orders yet!</h2>
+      </div>
+    );
+  }
+
     
+
   return (
 
     <div className='container mt-14'>

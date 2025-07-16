@@ -17,18 +17,19 @@ const HomeSlider = () => {
   };
 
   return (
-    <div className='row p-3'>
-    <div className="slider-container w-2/3">
+  <div className="flex p-3 gap-4 ">
+    <div className="w-full sm:w-2/3 overflow-hidden rounded-lg">
       <Slider {...settings}>
-        <img src={img1} className='w-full h-full' alt="" />
-        <img src={img3} className='w-full h-full' alt="" />
+        <img src={img1} className="w-full h-[300px] object-cover rounded-lg" alt="" />
+        <img src={img3} className="w-full h-[300px] object-cover rounded-lg" alt="" />
       </Slider>
     </div>
-    <div className="images w-1/3 row flex-col">
-      <img src={img4} className='w-full h-1/2' alt="" />
-      <img src={img2} className='w-full h-1/2' alt="" />
+
+    <div className="w-1/3 flex-col gap-4 hidden sm:flex">
+      <img src={img4} className="w-full h-[150px] object-cover rounded-lg" alt="" />
+      <img src={img2} className="w-full h-[150px] object-cover rounded-lg" alt="" />
     </div>
-    </div>
+  </div>
   )
 }
 

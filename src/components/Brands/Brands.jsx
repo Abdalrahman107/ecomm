@@ -36,8 +36,7 @@ const Brands = () => {
   return (
     <>
       <div className="container mt-20">
-        <h1 className='text-5xl font-bold main-color text-center py-5'>Brands</h1>
-        <div className='py-7 flex flex-wrap justify-center px-7 md:px-0'>
+        <div className='flex flex-wrap justify-center px-7 md:px-0'>
           {data?.data?.data?.map(function (category, idx) {
             return (
                 <div key={idx} className='oveflow-hidden w-full md:w-1/5 p-4'>

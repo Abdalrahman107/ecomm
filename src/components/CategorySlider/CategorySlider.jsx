@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 
 const CategorySlider = ({ data:categories }) => {
@@ -52,15 +53,15 @@ const CategorySlider = ({ data:categories }) => {
 
   return (
     <>
-    <h2 className='mt-6 p-3 font-medium'>Shop Popular Categories</h2>
+    <h2 className='mt-6 p-3 text-2xl font-semibold'>Shop Popular Categories</h2>
     <div className="slider-container p-3 mb-10">
       <Slider {...settings}>
             {categories?.map((category)=>{
               return (
-              <div className='outline-0' key={category._id}>
+              <Link key={category._id} to={`/categoryproducts/${category._id}`} className='outline-0'>
                 <img src={category.image} className='w-full h-[200px] object-cover' alt="" />
-                <h2 className='my-2 ml-1'>{category.name}</h2>
-              </div>
+                <h2 className='my-3 font-medium text-center'>{category.name}</h2>
+              </Link>
             )})}
       </Slider>
     </div>
@@ -70,3 +71,4 @@ const CategorySlider = ({ data:categories }) => {
 }
 
 export default CategorySlider
+

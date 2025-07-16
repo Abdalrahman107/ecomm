@@ -9,7 +9,7 @@ import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader'
 
 const Categories = () => {
 
-  const { data: categoriesData , isError: categoriesIsError, isLoading: categoriesIsLoading } = useCategories()
+  const { data: categoriesData , isError: categoriesIsError, isLoading: categoriesIsLoading } = useCategories();
   const categories = categoriesData?.data.data;
 
   if(categoriesIsLoading){

@@ -1,72 +1,88 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { authContext } from '../../context/Auth/AuthContext';
 
 const ProductCard = ({ products, addtocart, wishListProducts, addToWishList }) => {
+  const { token } = useContext(authContext);
+  const [clickedProductId, setClickedProductId] = useState(null);
+  const [wishProductId, setwishProductId] = useState(null);
+  const navigate = useNavigate();
 
-    const [clickedProductId, setClickedProductId] = useState(null);
-    const [wishProductId, setwishProductId] = useState(null);
+  let favourites = new Array(wishListProducts.data);
 
-    let favourites = new Array(wishListProducts.data);
   return (
-    <div className='home row'>
-    {products?.map((product)=>{
-      return (
-        <div key={product.id} className="card w-full md:w-1/2 lg:w-1/3 xl:w-1/4  p-3 rounded">
-          <div className="inner p-3 bg-slate-100">
-            <Link to={`/productdetails/${product._id}`}>                  
-              <img className="w-full" src={product.imageCover} alt="" /> 
-
-              <h6 className="mt-3 main-color">{product.category.name}</h6>
-              <h5 className="mb-6 font-medium text-gray-900">{product.title.split(' ', 2).join(' ')}</h5>
-              
-              <div className='row justify-between items-center font-light'>
-                <span>{product.price} EGP</span>
-                  <span><i className="fa-solid fa-star text-amber-400 mr-2"></i>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4 py-8">
+      {products?.map((product) => (
+        <div
+          key={product.id}
+          className="bg-white rounded-2xl shadow-xl hover:shadow-4xl transition-all duration-500 overflow-hidden border border-gray-100 hover:scale-105"
+        >
+          <Link to={`/productdetails/${product._id}`} className="block">
+            <img
+              src={product.imageCover}
+              alt={product.title}
+              className="w-full h-52 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-sm text-gray-500 uppercase tracking-wide">{product.category.name}</p>
+              <h3 className="text-lg font-semibold text-gray-800 mt-1 truncate">
+                {product.title.split(' ', 2).join(' ')}
+              </h3>
+              <div className="flex justify-between items-center text-sm text-gray-700 mt-2">
+                <span className="font-semibold">{product.price} EGP</span>
+                <span className="flex items-center gap-1">
+                  <i className="fa-solid fa-star text-yellow-400"></i>
                   {product.ratingsAverage}
                 </span>
               </div>
-            </Link>
-            <div className="text-center mt-6 mb-2 flex items-center gap-3">
-
-              <button onClick={async()=>{
-                setClickedProductId(product.id);
-                await addtocart(product.id);
-                setClickedProductId(null);
-              }} className="link relative top-24 opacity-0 p-2.5 text-sm !text-white bg-main-color rounded-lg hover:bg-green-800 cursor-pointer">
-                {clickedProductId === product.id ? (
-                  <i className="fa-solid fa-spinner fa-spin"></i>
-                ) : (
-                  "Add To Cart"
-                )}
-              </button>
-
-              <button onClick={async()=>{
-                setwishProductId(product.id);
-                await addToWishList(product.id);
-                setwishProductId(null);
-              }} type="button" className="link relative top-24 opacity-0 p-2.5 text-sm !text-white bg-blue-500 rounded-lg hover:bg-blue-800 cursor-pointer">
-              {wishProductId === product.id ? (
-                  <i className="fa-solid fa-spinner fa-spin"></i>
-                ) : (
-                  "WishList"
-                )}
-              </button>
-
-              {favourites[0] ? favourites[0].map(function (item, index) {
-                if (item.id.includes(product.id)) {
-                  return <i key={index} className={`ml-auto fa-solid fa-heart text-3xl text-red-600 hover:text-red-800 transition duration-500`}></i>
-                }
-              }) : ""}
-
             </div>
+          </Link>
+
+          <div className="justify-end flex items-center gap-2 px-4 pb-4 mt-1">
+            <button
+              onClick={async () => {
+                if (token) {
+                  setClickedProductId(product.id);
+                  await addtocart(product.id);
+                  setClickedProductId(null);
+                } else {
+                  navigate('/requiredlogin');
+                }
+              }}
+              className="cursor-pointer py-2 px-3 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md transition"
+            >
+              {clickedProductId === product.id ? (
+                <i className="fa-solid fa-spinner fa-spin text-lg"></i>
+              ) : (
+                <i class="fa-solid fa-cart-shopping text-lg"></i>
+              )}
+            </button>
+
+            <button
+              onClick={async () => {
+                if (token) {
+                  setwishProductId(product.id);
+                  await addToWishList(product.id);
+                  setwishProductId(null);
+                } else {
+                  navigate('/requiredlogin');
+                }
+              }}
+              className="cursor-pointer py-2 px-3 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md transition"
+            >
+              {wishProductId === product.id ? (
+                <i className="fa-solid fa-spinner fa-spin text-lg"></i>
+              ) : (
+              favourites[0]?.some((item) => item.id.includes(product.id)) && (
+              <i className="fa-solid fa-heart text-red-600 text-lg"></i>
+              ) || <i class="fa-solid fa-heart text-lg"></i>
+              )}
+            </button>
           </div>
         </div>
-      )
-      
-    })}
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
-
+export default ProductCard;

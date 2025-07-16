@@ -28,7 +28,7 @@ const ProductDetailsSlider = ({ product }) => {
       }
 
       const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -43,7 +43,7 @@ const ProductDetailsSlider = ({ product }) => {
     <div className='slider-container'>    
         <Slider {...settings}>
             {product.images?.map((image)=>{
-                return <img src={image} className='w-full relative' alt="" />
+                return <img src={image} className='w-full h-120 object-cover relative' alt="" />
             })}
         </Slider>
     </div>
